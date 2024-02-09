@@ -1,7 +1,7 @@
 
 const axios = require('axios');
 const searchBox = async () => {
-    const url = "https://api.mercadolibre.com/items/MLA1579172896/description";
+    const url = "https://api.mercadolibre.com/sites/MLA/search?q=:query";
 
     try {
         const response = await axios.get(url);
