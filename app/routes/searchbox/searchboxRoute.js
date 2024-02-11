@@ -5,4 +5,5 @@ const searchBoxController = require('../../controller/searchbox/searchboxControl
 /* GET home page. */
 router.get('/', searchBoxController.searchBox)
 
+
 module.exports = router;

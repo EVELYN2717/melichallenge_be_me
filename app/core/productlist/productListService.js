@@ -1,7 +1,7 @@
 
 const axios = require('axios');
-const productList = async () => {
-    const url = "https://api.mercadolibre.com/items/MLA1579172896";
+const productList = async (id) => {
+    const url = "https://api.mercadolibre.com/items/".concat(id);
 
     try {
         const response = await axios.get(url);
@@ -12,7 +12,7 @@ const productList = async () => {
                 }}
         } catch (error) {
             return error;
-    }
+        }
 }
 
 module.exports = {productList};

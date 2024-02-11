@@ -3,8 +3,7 @@
 const searchBoxService = require('../../core/searchbox/searchBoxService');
 
 const searchBox = async (req, res, next) => {
-    const response = await searchBoxService.searchBox();
-    await res.json(response);
+    await res.json(await searchBoxService.searchBox(req.query.q));
 }
 
 module.exports = {searchBox};
