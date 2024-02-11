@@ -2,11 +2,10 @@
 const axios = require('axios');
 const searchBox = async (query) => {
     try {
-        const itemsResult = [];
-        const categoriesResult = [];
         return axios.get("https://api.mercadolibre.com/sites/MLA/search?q=:".concat(query)).then( responseSearchBox => {
-
-            responseSearchBox.data.results.forEach( item => {
+            const itemsResult = [];
+            const categoriesResult = [];
+            responseSearchBox.data.results.forEach(item => {
                 categoriesResult.push(item.category_id);
                 itemsResult.push({
                     id: item.id,
@@ -22,7 +21,7 @@ const searchBox = async (query) => {
                 });
             });
 
-            return  {
+            return {
                 author: {
                     name: 'EVELYN',
                     lastname: "GUTIERREZ"
