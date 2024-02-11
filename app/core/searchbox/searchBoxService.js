@@ -21,8 +21,12 @@ const searchBox = async (query) => {
                 });
             });
 
-            responseSearchBox.data.available_filters.find( value => value.id === 'category').values.forEach( categories => {
-                categoriesResult.push(categories.name);
+            responseSearchBox.data.available_filters.find( value => value.id === 'category') === undefined ?
+                responseSearchBox.data.filters.find( value => value.id === 'category').values.forEach(categories => {
+                    categories.path_from_root.forEach( path => categoriesResult.push(path.name))
+                }) :
+                responseSearchBox.data.available_filters.find( value => value.id === 'category').values.forEach( categories => {
+                    categoriesResult.push(categories.name);
             });
 
             return {
