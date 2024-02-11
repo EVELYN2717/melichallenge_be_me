@@ -5,8 +5,8 @@ const searchBox = async (query) => {
         return axios.get("https://api.mercadolibre.com/sites/MLA/search?q=:".concat(query)).then( responseSearchBox => {
             const itemsResult = [];
             const categoriesResult = [];
+
             responseSearchBox.data.results.forEach(item => {
-                categoriesResult.push(item.category_id);
                 itemsResult.push({
                     id: item.id,
                     title: item.title,
@@ -19,6 +19,10 @@ const searchBox = async (query) => {
                     condition: item.condition,
                     free_shipping: item.free_shipping
                 });
+            });
+
+            responseSearchBox.data.available_filters.find( value => value.id === 'category').values.forEach( categories => {
+                categoriesResult.push(categories.name);
             });
 
             return {
