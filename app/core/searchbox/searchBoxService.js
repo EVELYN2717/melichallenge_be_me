@@ -21,13 +21,12 @@ const searchBox = async (query) => {
                 });
             });
 
-            responseSearchBox.data.available_filters.find( value => value.id === 'category') === undefined ?
-                responseSearchBox.data.filters.find( value => value.id === 'category').values.forEach(categories => {
-                    categories.path_from_root.forEach( path => categoriesResult.push(path.name))
-                }) :
-                responseSearchBox.data.available_filters.find( value => value.id === 'category').values.forEach( categories => {
-                    categoriesResult.push(categories.name);
-            });
+            const availableFilterExists = responseSearchBox.data.available_filters.find( filters => filters.id === 'category');
+            availableFilterExists === undefined
+                ? responseSearchBox.data.filters.find( value => value.id === 'category').values.forEach(categories =>
+                    categories.path_from_root.forEach( path => categoriesResult.push(path.name)))
+                : availableFilterExists.values.forEach( categories =>
+                    categoriesResult.push(categories.name));
 
             return {
                 author: {
