@@ -14,6 +14,7 @@ const itemById = async (id) => {
                 item:{
                     id: responseItemId.id,
                     title: responseItemId.title,
+                    category_id: responseItemId.category_id,
                     price:{
                         currency: responseItemId.currency_id,
                         amount: responseItemId.price,
@@ -28,7 +29,6 @@ const itemById = async (id) => {
             }
         });
     }, (reason) => {
-        console.log('ALGO SALIO MAL', reason);
     });
 }
 
