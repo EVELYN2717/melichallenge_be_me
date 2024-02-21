@@ -4,6 +4,7 @@ depedencies to install
 
 - Node v20.11.0 
 - npm 10.2.4
+- Express 4.16.1
 
 To deploy and run melichallenge_be_me proyect you should type on your terminal:
 
